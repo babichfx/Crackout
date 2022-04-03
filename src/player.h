@@ -11,31 +11,33 @@
 #include "constants.h"
 #include "Timer.h"
 #include "bonus.h"
+#include "data.h"
 
 class Player {
 private:
-    ofVec2f pos_;
-    float   velocity_;
-    Directions moveDirection_;
-    float   speed_;
-    float   width_;
-    bool    isBonusActive_;
-    Bonuses bonus_;
-    Timer   *timerBonus_;
+    Data       *data_;
+    //ofVec2f     pos_;
+    float       velocity_;
+    Directions  moveDirection_;
+    float       speed_;
+    float       width_;
+    bool        isBonusActive_;
+    Bonuses     bonus_;
+    Timer      *timerBonus_;
 public:
+    Player() : velocity_(0), speed_(platformSpeed), width_(platformWidth), isBonusActive_(false) {}
+    ~Player()       = default;
     Player(Player&) = delete;
-    Player() : pos_(250, ofGetHeight() - platformYPos), velocity_(0), speed_(platformSpeed), width_(platformWidth), isBonusActive_(false) {}
-    ~Player() = default;
     
-    inline const ofVec2f & getPosition() const {return pos_;}
+    //inline const ofVec2f & getPosition() const {return pos_;}
     inline const float   & getWidth() const {return width_;}
     inline const bool isBonusActive() const {return isBonusActive_;}
     
-    void move();
+    float move(float posX);
     void calculateVelocity();
     void setDirection(const Directions&);
     void stop() {moveDirection_ = Directions::none;}
-    void startBonus(const Bonus&);
+    void getBonus(const Bonus&);
     void stopBonus();
     void stopBonusByTimer();
 };

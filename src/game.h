@@ -8,13 +8,22 @@
 #ifndef game_hpp
 #define game_hpp
 
+#include "ofMain.h"
 #include "constants.h"
+#include "level.h"
+#include "data.h"
 
 class Game {
 public:
-    Game() : state_(States::intro) {};
-    ~Game() = default;
+    Game();
+    ~Game();
+    void update();
+    void render();
+    void keyPressed(int);
+    void keyReleased(int);
 private:
+    Level * level_;
+    Data gameData_;
     States state_;
 };
 

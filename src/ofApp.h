@@ -1,8 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "bonus.h"
-#include "player.h"
+#include "game.h"
 
 class ofApp : public ofBaseApp{
 public:
@@ -22,6 +21,5 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    Player player{};
-    Bonus * bonus_;
+    Game game_;
 };

@@ -5,14 +5,14 @@
 
 #include "ofMain.h"
 
-constexpr int ballVelocity = 10;
-constexpr int platformWidth = 150;
+constexpr int ballVelocity   = 10;
+constexpr int platformWidth  = 150;
 constexpr int platformHeight = 20;
-constexpr int platformSpeed = 500;
-constexpr int platformYPos = 50;
+constexpr int platformSpeed  = 500;
+constexpr int platformYPos   = 50;
 
 enum class States{
-    intro, menu, level, credits
+    intro = 0, menu, start, playground, end, goals, credits
 };
 
 enum class Bonuses{

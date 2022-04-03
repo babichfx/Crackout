@@ -15,7 +15,7 @@ void Player::calculateVelocity(){
     velocity_ = moveDirection_ * speed_ * ofGetLastFrameTime();
 }
 
-void Player::startBonus(const Bonus &b){
+void Player::getBonus(const Bonus &b){
     if(isBonusActive_) stopBonus();
     
     bonus_ = b.getType();
@@ -56,9 +56,10 @@ void Player::stopBonusByTimer(){
     if(timerBonus_->isTimerAlarm()) stopBonus();
 }
 
-void Player::move() {
-    pos_.x += velocity_;
+float Player::move(float posX) {
+    posX += velocity_;
     auto rightBorder = ofGetWidth();
-    if((pos_.x) < 0) pos_.x = 0;
-    if((pos_.x + width_) > rightBorder) pos_.x = rightBorder - width_;
+    if((posX) < 0) posX = 0;
+    if((posX + width_) > rightBorder) posX = rightBorder - width_;
+    return posX;
 }

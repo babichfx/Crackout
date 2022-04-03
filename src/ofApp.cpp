@@ -8,33 +8,22 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if(player.isBonusActive()) player.stopBonusByTimer();
-    player.calculateVelocity();
-    player.move();
+    game_.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawRectRounded(player.getPosition(), player.getWidth(), platformHeight, platformHeight);
+    game_.render();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key == OF_KEY_LEFT)
-        player.setDirection(Directions::left);
-    if(key == OF_KEY_RIGHT)
-        player.setDirection(Directions::right);
-    if(key == ' '){
-        bonus_ = new Bonus();
-        player.startBonus(*bonus_);
-        delete bonus_;
-    }
+    game_.keyPressed(key);
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    if(key == OF_KEY_LEFT || key == OF_KEY_RIGHT)
-        player.stop();
+    game_.keyReleased(key);
 }
 
 //--------------------------------------------------------------
